@@ -89,19 +89,27 @@ public class Main : MonoBehaviour
     private void Pull()
     {
         PullSystem.Enabled = GUILayout.Toggle(PullSystem.Enabled, "Pull Mod");
+
         GUILayout.Space(5f);
         GUILayout.Label("Mode");
+
         int mode = (int)PullSystem.Mode;
         mode = GUILayout.Toolbar(mode, new[] { "Stable", "Dynamic", "Strong" }, TabStyle);
         PullSystem.Mode = (PullSystem.PullMode)mode;
+
         GUILayout.Space(10f);
+
         GUILayout.Label($"Pull Power: {PullSystem.PullPower:F3}");
         PullSystem.PullPower = GUILayout.HorizontalSlider(PullSystem.PullPower, 0.001f, 1f, SliderStyle, SliderThumbStyle);
+
         GUILayout.Label($"Uphill Power: {PullSystem.UpHillPower:F3}");
         PullSystem.UpHillPower = GUILayout.HorizontalSlider(PullSystem.UpHillPower, 0.001f, 0.5f, SliderStyle, SliderThumbStyle);
+
         GUILayout.Space(5f);
         GUILayout.Label("Presets");
+
         GUILayout.BeginHorizontal();
+
         if (GUILayout.Button("Speed", ButtonStyle))
             PullPresets.Speed();
 
@@ -112,7 +120,9 @@ public class Main : MonoBehaviour
             PullPresets.Strong();
 
         GUILayout.EndHorizontal();
+
         GUILayout.Space(5f);
+
         if (GUILayout.Button(Advanced ? "Advanced ▲" : "Advanced ▼", ButtonStyle))
             Advanced = !Advanced;
 
@@ -120,17 +130,23 @@ public class Main : MonoBehaviour
             return;
 
         GUILayout.Space(5f);
+
         GUILayout.Label($"Momentum: {PullSystem.Momentum:F4}");
-        PullSystem.Momentum = GUILayout.HorizontalSlider(PullSystem.Momentum, 0f, 0.01f, SliderStyle, SliderThumbStyle);
+        PullSystem.Momentum = GUILayout.HorizontalSlider(PullSystem.Momentum, 0f, 0.05f, SliderStyle, SliderThumbStyle);
+
         GUILayout.Label($"Max Pull: {PullSystem.MaxPull:F3}");
-        PullSystem.MaxPull = GUILayout.HorizontalSlider(PullSystem.MaxPull, 0.01f, 0.25f, SliderStyle, SliderThumbStyle);
+        PullSystem.MaxPull = GUILayout.HorizontalSlider(PullSystem.MaxPull, 0.01f, 1f, SliderStyle, SliderThumbStyle);
+
         PullSystem.ClampVelocity = GUILayout.Toggle(PullSystem.ClampVelocity, "Velocity Clamp");
+
         if (PullSystem.ClampVelocity)
         {
             GUILayout.Label($"Max Velocity: {PullSystem.MaxVelocity:F1}");
-            PullSystem.MaxVelocity = GUILayout.HorizontalSlider(PullSystem.MaxVelocity, 5f, 30f, SliderStyle, SliderThumbStyle);
+            PullSystem.MaxVelocity = GUILayout.HorizontalSlider(PullSystem.MaxVelocity, 5f, 150f, SliderStyle, SliderThumbStyle);
         }
+
         GUILayout.Space(5f);
+
         if (GUILayout.Button("Reset Pull", ButtonStyle))
             PullSystem.ResetPull();
     }
