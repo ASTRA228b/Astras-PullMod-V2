@@ -26,8 +26,14 @@ public class Main : MonoBehaviour
     private void OnGUI()
     {
         EnsureLoad();
-        if (Open)
-            Window = GUILayout.Window(987421, Window, UIM, "Astra's PullMod V2", WindowStyle);
+
+        if (!Open)
+            return;
+
+        Window.width = 400f;
+        Window.height = 430f;
+
+        Window = GUILayout.Window(987421, Window, UIM, "Astra's PullMod V2", WindowStyle);
     }
 
     private void Update()
@@ -90,9 +96,9 @@ public class Main : MonoBehaviour
         PullSystem.Mode = (PullSystem.PullMode)mode;
         GUILayout.Space(10f);
         GUILayout.Label($"Pull Power: {PullSystem.PullPower:F3}");
-        PullSystem.PullPower = GUILayout.HorizontalSlider(PullSystem.PullPower, 0.001f, 0.2f, SliderStyle, SliderThumbStyle);
+        PullSystem.PullPower = GUILayout.HorizontalSlider(PullSystem.PullPower, 0.001f, 1f, SliderStyle, SliderThumbStyle);
         GUILayout.Label($"Uphill Power: {PullSystem.UpHillPower:F3}");
-        PullSystem.UpHillPower = GUILayout.HorizontalSlider(PullSystem.UpHillPower, 0.001f, 0.1f, SliderStyle, SliderThumbStyle);
+        PullSystem.UpHillPower = GUILayout.HorizontalSlider(PullSystem.UpHillPower, 0.001f, 0.5f, SliderStyle, SliderThumbStyle);
         GUILayout.Space(5f);
         GUILayout.Label("Presets");
         GUILayout.BeginHorizontal();

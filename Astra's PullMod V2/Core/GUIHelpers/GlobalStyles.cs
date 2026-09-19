@@ -11,7 +11,7 @@ public static class GlobalStyles
     private static Color ButtonColor = new(0.2f, 0.2f, 0.2f, 1f);
     private static Color SliderTrackColor = new(0.15f, 0.15f, 0.15f, 1f);
     private static Color SliderThumbColor = new(0f, 0.6f, 1f, 1f);
-    private static Color SelectedColor = new(0f, 0.45f, 0.9f, 1f);
+    private static Color SelectedColor = new(0.08f, 0.15f, 0.26f, 1f);
 
     private static bool Loaded;
 
@@ -39,8 +39,13 @@ public static class GlobalStyles
         ButtonStyle.focused.textColor = Color.white;
 
         TabStyle.normal.textColor = Color.white;
-        TabStyle.hover.textColor = Color.white;
-        TabStyle.active.textColor = Color.white;
+        TabStyle.hover.textColor = Color.blue;
+        TabStyle.active.textColor = Color.red;
+        TabStyle.focused.textColor = Color.white;
+        TabStyle.onNormal.textColor = Color.blue;
+        TabStyle.onHover.textColor = Color.blue;
+        TabStyle.onActive.textColor = Color.blue;
+        TabStyle.onFocused.textColor = Color.blue;
 
         SelectedTabStyle.normal.textColor = Color.white;
         SelectedTabStyle.hover.textColor = Color.white;
